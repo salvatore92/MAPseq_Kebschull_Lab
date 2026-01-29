@@ -44,7 +44,7 @@ collapsednonspikes_globalreads=dataglobal_nonspikes_reads(loc_nonspikes_globalG,
 %filter out SSI with no barcodes
 filesize=[];
 for i=1:length(bcn)
-    file=dir(['thresholds/',prefix,'_',int2str(bcn(i)),'_counts.txt']);
+    file=dir(['thresholds/pre/',prefix,'_pre',int2str(bcn(i)),'_counts.txt']);
     filesize(i)=file.bytes;
 end
 
@@ -53,8 +53,8 @@ data=struct();
 spikes=struct();
 
 for i=1:length(bcnfilt)
-data(i).counts=dlmread(['thresholds/',prefix,'_',int2str(bcnfilt(i)),'_counts.txt']);
-data(i).reads=int8(char(textread(['thresholds/',prefix,'_',int2str(bcnfilt(i)),'_seq.txt'],'%s')));
+data(i).counts=dlmread(['thresholds/pre/',prefix,'_pre',int2str(bcnfilt(i)),'_counts.txt']);
+data(i).reads=int8(char(textread(['thresholds/pre/',prefix,'_pre',int2str(bcnfilt(i)),'_seq.txt'],'%s')));
 end
 
 %load alignments
